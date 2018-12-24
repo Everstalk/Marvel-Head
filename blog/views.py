@@ -25,6 +25,7 @@ def get_post_data(request):
         if form.is_valid():
             form.save()
         return render(request, 'blog/post_list.html')
+
 """
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -42,7 +43,7 @@ def new_post(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('detail', pk=post.pk)
+            return redirect('blog:detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/edit_post.html', {'form': form})
@@ -56,7 +57,7 @@ def edit_post(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('detail', pk=post.pk)
+            return redirect('blog:detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/edit_post.html', {'form': form})
