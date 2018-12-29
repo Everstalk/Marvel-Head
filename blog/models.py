@@ -21,6 +21,9 @@ class Post(models.Model):
     def was_published_recently(self):
         return self.published_date >= timezone.now() - datetime.timedelta(days=1)
 
+    def approved_comments(self):
+        return self.comments.filter(approved_comment=True)
+
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', default="", on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
