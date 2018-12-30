@@ -5,10 +5,10 @@
         {{ post.published_date }}
     </div>
     {% endif %} {% if user.is_authenticated %}
-    <a class="btn btn-default" href="{% url 'blog:edit_post' pk=post.pk %}">
+    <a class="btn btn-primary" href="{% url 'blog:edit_post' pk=post.pk %}">
         <span class="glyphicon glyphicon-pencil"></span>
     </a>
-    <a class="btn btn-default" href="{% url 'blog:remove_post' pk=post.pk %}">
+    <a class="btn btn-danger" href="{% url 'blog:remove_post' pk=post.pk %}">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     {% endif %}
@@ -16,7 +16,7 @@
     <p>{{ post.text|linebreaks }}</p>
 </div>
 
-<a class="btn btn-default" href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a>
+<a class="btn btn-primary" href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a>
 
 {% for comment in post.comments.all %} {% if user.is_authenticated or comment.approved_comment %}
 <div class="comment">
